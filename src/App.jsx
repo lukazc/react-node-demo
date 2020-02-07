@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import './App.css';
 
 import List from "./components/list";
-// import Login from "./components/login";
+import Login from "./components/login";
 
 class App extends Component {
     render() {
@@ -11,7 +11,7 @@ class App extends Component {
           <React.Fragment>
               <Switch>
                   <Route exact path = "/" component = { List } />
-                  {/* <Route exact path = "/login" component = { Login } /> */}
+                  <Route exact path = "/login" component = { Login } />
               </Switch>
           </React.Fragment>
         );
