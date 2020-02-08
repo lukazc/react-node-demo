@@ -26,6 +26,7 @@ export default class LoginForm extends Component {
           className="form-control"
           placeholder="Enter e-mail"
           aria-label="Enter e-mail"
+          required
         />
         <input
           type="password"
@@ -35,6 +36,10 @@ export default class LoginForm extends Component {
           className="form-control"
           placeholder="Enter password"
           aria-label="Enter password"
+          minLength="6"
+          pattern=".*[0-9].*"
+          title="Password must contain at least one digit."
+          required
         />
         <button type="submit" className="btn btn-primary">
           Submit
