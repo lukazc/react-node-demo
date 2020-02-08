@@ -2,6 +2,6 @@
 
 CONSTANTS.ENDPOINT = {};
 CONSTANTS.ENDPOINT.LIST = "/api/list";
-CONSTANTS.ENDPOINT.LOGIN = "/api/login";
+CONSTANTS.ENDPOINT.LOGIN = "/login";
 
 export default CONSTANTS;
