@@ -3,19 +3,29 @@
 import ListItem from "./ListItem";
 import ListForm from "./ListForm";
 
+import { AuthContext } from '../../context/auth';
+
 import CONSTANTS from '../../constants';
 const { ENDPOINT } = CONSTANTS;
 
+
 export default class List extends Component {
+
+  static contextType = AuthContext;
+  getToken = this.context;
+
   state = {
     listItems: []
   };
 
   // Get the data from the back end
   componentDidMount() {
-    fetch(ENDPOINT.LIST)
+    fetch(ENDPOINT.LIST, {
+        headers: { 'Authorization': this.getToken() }
+    })
       .then(response => {
         if (!response.ok) {
+          if(response.status === 401) this.props.logout();
           throw Error(response.statusText);
         }
         return response.json();
@@ -27,9 +37,12 @@ export default class List extends Component {
   }
 
   deleteListItem = (listItem) => {
-    fetch(`${ENDPOINT.LIST}/${listItem._id}`, { method: "DELETE" })
+    fetch(`${ENDPOINT.LIST}/${listItem._id}`, {
+        method: "DELETE", headers: { 'Authorization': this.getToken() }
+    })
       .then(response => {
         if (!response.ok) {
+          if(response.status === 401) this.props.logout();
           throw Error(response.statusText);
         }
         return response.json();
@@ -51,13 +64,17 @@ export default class List extends Component {
 
     fetch(ENDPOINT.LIST, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+          "Content-Type": "application/json",
+          'Authorization': this.getToken()
+        },
       body: JSON.stringify({
         text: textField
       })
     })
       .then(response => {
         if (!response.ok) {
+          if(response.status === 401) this.props.logout();
           throw Error(response.statusText);
         }
         return response.json();

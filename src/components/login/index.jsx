@@ -11,9 +11,7 @@ export default class Login extends Component {
       password: ''
   };
 
-  componentDidMount() {
-      // TODO check if logged, redirect
-  }
+  componentDidMount() {}
 
   onSubmit = (email, password) => {
     if (!email || !password) {
@@ -35,12 +33,12 @@ export default class Login extends Component {
         }
         return response.json();
       })
-      .then(token => {
-          // TODO auth
+      .then(response => {
+          this.props.login(response.token);
       })
-      .catch(error =>
-        error // TODO
-      );
+      .catch(error => {
+          // TODO
+      });
   }
 
   render() {
