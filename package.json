@@ -23,8 +23,10 @@
         "start-react": "react-scripts start",
         "start-node": "node server/bin/www",
         "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "test-react": "react-scripts test",
+        "eject": "react-scripts eject",
+        "test": "jest",
+        "test:watch": "jest --watch"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -44,6 +46,8 @@
     },
     "devDependencies": {
         "concurrently": "^5.1.0",
-        "express-generator": "^4.16.1"
+        "express-generator": "^4.16.1",
+        "jest": "^25.1.0",
+        "supertest": "^4.0.2"
     }
 }
