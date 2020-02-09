@@ -47,7 +47,6 @@
     "devDependencies": {
         "concurrently": "^5.1.0",
         "express-generator": "^4.16.1",
-        "jest": "^25.1.0",
         "supertest": "^4.0.2"
     }
 }
